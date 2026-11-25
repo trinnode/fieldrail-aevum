@@ -1,4 +1,6 @@
 import { formatUnits, parseUnits, parseAbi, toFunctionSelector } from "viem";
+
+export { toFunctionSelector } from "viem";
 import type { Invoice } from "@fieldrail/shared-types";
 import { TUSD8_DECIMALS } from "@fieldrail/chain-config";
 
@@ -124,6 +126,22 @@ export function parseAmount(value: string): bigint {
 export function percent(spent: bigint, cap: bigint): number {
   if (cap === 0n) return 0;
   return Math.min(100, Number((spent * 10000n) / cap) / 100);
+}
+
+/** Object form required by viem's signTypedData (matches `invoiceTypes` field names). */
+export function invoiceMessage(invoice: Invoice) {
+  return {
+    programmeId: invoice.programmeId,
+    invoiceId: invoice.invoiceId,
+    teamId: invoice.teamId,
+    categoryId: invoice.categoryId,
+    supplier: invoice.supplier,
+    token: invoice.token,
+    amount: invoice.amount,
+    evidenceHash: invoice.evidenceHash,
+    nonce: invoice.nonce,
+    deadline: invoice.deadline,
+  };
 }
 
 export function invoiceTuple(invoice: Invoice) {

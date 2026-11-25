@@ -43,6 +43,14 @@ export const FACTORY_ADDRESS = (process.env.NEXT_PUBLIC_FACTORY_ADDRESS ?? "") a
 
 export const DEMO_VAULT_ADDRESS = (process.env.NEXT_PUBLIC_PROGRAM_VAULT_ADDRESS ?? "") as `0x${string}`;
 
+/** Synthetic supplier wallet used in the demo journey (clearly labelled test data). */
+export const DEMO_SUPPLIER_ADDRESS = (process.env.NEXT_PUBLIC_SUPPLIER_ADDRESS ??
+  "0x1111111111111111111111111111111111111111") as `0x${string}`;
+
+/** Synthetic procurement-agent wallet used in the demo journey. */
+export const DEMO_AGENT_ADDRESS = (process.env.NEXT_PUBLIC_AGENT_ADDRESS ??
+  "0x2222222222222222222222222222222222222222") as `0x${string}`;
+
 export const PROGRAMME_ID = "NORTHERN_WATER_ACCESS_DEMO";
 
 export function txUrl(hash: string): string {

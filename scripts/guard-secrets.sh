@@ -13,7 +13,7 @@ patterns=(
 
 status=0
 for pattern in "${patterns[@]}"; do
-  if git grep -n -E "$pattern" -- . ':!*.woff2' ':!*.woff' ':!*.png' 2>/dev/null; then
+  if git grep -n -E -- "$pattern" -- . ':!*.woff2' ':!*.woff' ':!*.png' 2>/dev/null; then
     echo "SECRET GUARD: matched '$pattern' in tracked files" >&2
     status=1
   fi
@@ -22,7 +22,7 @@ done
 # Staged diff (including newly added files).
 staged=$(git diff --cached --no-color 2>/dev/null || true)
 for pattern in "${patterns[@]}"; do
-  if printf '%s' "$staged" | grep -qE "$pattern"; then
+  if printf '%s' "$staged" | grep -qE -- "$pattern"; then
     echo "SECRET GUARD: matched '$pattern' in staged diff" >&2
     status=1
   fi

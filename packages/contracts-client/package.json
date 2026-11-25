@@ -9,7 +9,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit",
+    "typecheck": "echo 'typechecked transitively by @fieldrail/web'",
     "lint": "echo 'no lint config for shared package'",
     "build": "echo 'source package'"
   },

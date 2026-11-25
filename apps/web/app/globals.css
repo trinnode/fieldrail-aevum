@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/bricolage-grotesque-latin-ext.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Chivo Mono";
+  src: url("/fonts/chivo-mono-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-canvas: #f6f3ee;
+  --color-surface: #ffffff;
+  --color-ink: #12202e;
+  --color-inksoft: #4b5b70;
+  --color-line: #dfe3dd;
+  --color-accent: #1f6b54;
+  --color-accentdeep: #164f3d;
+  --color-copper: #ab6a33;
+  --color-muted: #7b8896;
+  --color-positive: #237a5b;
+  --color-danger: #a33b35;
+
+  --font-display: "Bricolage Grotesque", "Instrument Sans", sans-serif;
+  --font-body: "Instrument Sans", Arial, sans-serif;
+  --font-mono: "Chivo Mono", ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image:
+    radial-gradient(1100px 600px at 88% -10%, rgba(31, 107, 84, 0.07), transparent 65%),
+    radial-gradient(800px 500px at -10% 20%, rgba(171, 106, 51, 0.05), transparent 60%);
+}
+
+::selection {
+  background: rgba(31, 107, 84, 0.18);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  box-shadow:
+    0 1px 2px rgba(18, 32, 46, 0.04),
+    0 12px 34px -24px rgba(18, 32, 46, 0.35);
+}
+
+.hairline {
+  border-color: var(--color-line);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+  border-radius: 11px;
+  padding: 0.7rem 1.1rem;
+  font-weight: 600;
+  transition: background 160ms ease, transform 160ms ease;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-accentdeep);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-quiet {
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: 11px;
+  padding: 0.6rem 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.btn-quiet:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  background: rgba(31, 107, 84, 0.05);
+}
+
+.input {
+  background: #fbfaf7;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  width: 100%;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+.input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(31, 107, 84, 0.1);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  padding: 0.22rem 0.6rem;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.moving-border {
+  position: relative;
+  isolation: isolate;
+}
+.moving-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(110deg, transparent 20%, var(--color-accent) 45%, transparent 70%);
+  background-size: 220% 100%;
+  animation: borderSweep 4.5s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+@keyframes borderSweep {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .moving-border::before {
+    animation: none;
+    background: var(--color-accent);
+  }
+}

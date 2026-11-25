@@ -1,0 +1,28 @@
+{
+  "name": "@fieldrail/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "start": "node --import tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'no lint config'",
+    "build": "echo 'tsx source package'",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fieldrail/chain-config": "workspace:*",
+    "@fieldrail/contracts-client": "workspace:*",
+    "@fieldrail/shared-types": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "viem": "^2.58.6",
+    "zod": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
+  }
+}

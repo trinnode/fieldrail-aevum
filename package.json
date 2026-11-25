@@ -10,6 +10,9 @@
     "contracts:build": "forge build --root contracts",
     "contracts:fmt": "forge fmt --root contracts --check"
   },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  },
   "engines": {
     "node": ">=22"
   },
