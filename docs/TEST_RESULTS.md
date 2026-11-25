@@ -44,9 +44,23 @@ transaction hash.
 | --- | --- |
 | `pnpm --filter @fieldrail/web typecheck` | exit 0 |
 | `pnpm --filter @fieldrail/web build` | Next.js 16 production build, 9 routes generated |
-| `pnpm --filter @fieldrail/web test` | 9 tests passed (money parsing, policy preflight, error mapping) |
+| `pnpm --filter @fieldrail/web test` | **45 tests passed** across `policy.test.ts` and `edge-cases.test.ts`: money parsing (including malformed inputs), identifier parity with Solidity keccak hashes, every policy gate refusing a payment, boundary acceptance, and custom-error decoding |
 | `pnpm --filter @fieldrail/mcp-server typecheck` | exit 0 |
 | `node scripts/mcp-smoke.mjs` | 11 tools listed; deterministic parser returned a valid draft; write tool refused without opt-in |
+
+## Browser and responsive checks
+
+Headless Chromium against `next start` on every route, desktop 1440px and mobile 390px:
+
+- All 9 routes returned HTTP 200 and rendered without missing CSS/assets.
+- Landing page inspected at both sizes: no horizontal overflow, original inline SVG logo renders, 3D passport card and Aceternity beams/spotlight/moving-border/text effects are present.
+- All invoice/workflow screens inspected at mobile width: forms, selects and notices remain within the viewport.
+- `prefers-reduced-motion: reduce` verified: the animated headline renders its full sentence immediately rather than staying blurred.
+
+Effect sources: official Aceternity registry JSON fetched on 2026-11-25 from
+`https://ui.aceternity.com/registry/<component>.json`. Components were copied in
+and adapted (light palette, green/copper gradients, reduced-motion handling).
+`spotlight-new` replaced `card-spotlight` to avoid pulling Three.js / R3F.
 
 ## Dependency provenance
 

@@ -17,7 +17,7 @@ A payment is rejected unless the programme is active and unexpired; the agent is
 | Area | Status |
 | --- | --- |
 | Solidity contracts (factory, vault, EIP-712 invoice) | Implemented |
-| Unit, fuzz and invariant-equivalent fuzz tests (44 tests) | Tested locally — all pass |
+| Contract tests (44) + web/MCP edge-case tests (45) | Tested locally — all pass |
 | Real tUSD8 payment on a Shanghai fork of live Aevum state | Verified on fork |
 | Live Aevum deployment and on-chain tUSD8 transaction | **Blocked** — see `docs/DEPLOYMENTS.md` |
 | Next.js application with all required screens | Implemented; production build passes |
@@ -66,6 +66,7 @@ Without a configured vault address the web app runs in **explicitly labelled syn
 - `docs/` — architecture, threat model, security, runbook, API, deployments, demo and submission
 - `research/` — dated competitive landscape and source registry
 - `public/brand/` — original SVG identity; `apps/web/public/fonts/` — self-hosted WOFF2 files
+- `apps/web/components/aceternity/` — official Aceternity registry components (3D Card, Bento Grid, Background Beams, Spotlight, Moving Border, Text Generate), recoloured for the light-first system and given static/reduced-motion fallbacks
 
 ## Licence and attribution
 

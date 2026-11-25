@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import { ConnectButton } from "./connect-button";
+import { BrandMark } from "./brand-mark";
 import { aevumChain } from "@fieldrail/chain-config";
 
 const NAV = [
@@ -24,8 +25,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-20 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1320px] items-center gap-5 px-5 py-3.5 sm:px-8">
           <Link href="/" className="flex items-center gap-2.5">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/fieldrail-mark.svg" alt="" className="h-7 w-7 text-accent" />
+            <BrandMark className="h-7 w-7 text-forest" />
             <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[0.18em]">FIELDRAIL</span>
           </Link>
           <span className="hidden border-l border-line pl-4 text-xs text-muted lg:block">

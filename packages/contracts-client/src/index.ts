@@ -119,7 +119,7 @@ export function formatAmount(value: bigint, decimals = 2): string {
 
 export function parseAmount(value: string): bigint {
   const trimmed = value.trim();
-  if (!/^\d+(\.\d{0,6})?$/.test(trimmed)) throw new Error("Invalid tUSD8 amount (max 6 decimals)");
+  if (!/^\d+(\.\d{1,6})?$/.test(trimmed)) throw new Error("Invalid tUSD8 amount (max 6 decimals)");
   return parseUnits(trimmed, TUSD8_DECIMALS);
 }
 
