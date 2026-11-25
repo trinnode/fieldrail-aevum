@@ -1,0 +1,38 @@
+name: FIELDRAIL CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: 1.5.1
+      - name: Format check
+        run: forge fmt --check --root contracts
+      - name: Build (Shanghai / solc 0.8.24)
+        run: forge build --root contracts
+      - name: Unit, fuzz and invariant-equivalent tests
+        run: forge test --root contracts -vv
+
+  web-and-mcp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.27.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r typecheck
+      - run: pnpm --filter @fieldrail/web test
+      - run: pnpm --filter @fieldrail/web build
+      - run: node scripts/mcp-smoke.mjs
