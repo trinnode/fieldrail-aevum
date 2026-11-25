@@ -25,6 +25,29 @@ Recorded 2026-11-25 on the build host. All commands run from `contracts/`.
   agent spend within mandate cap, unapproved supplier balance unchanged, and
   vault solvency (`token balance >= getFundsRemaining()`).
 
+## Live-state fork verification
+
+Command: `forge test --match-contract ForkJourneyTest --fork-url https://rpc-test.qday.info -vvv`
+
+Result: `[PASS] testRealTUSD8JourneyOnAevumFork()`. The trace shows live tUSD8
+`decimals() = 6`, a real ERC-20 transfer of 20 tUSD8 from a discovered holder to
+a throwaway sponsor, factory/vault deployment, funding, configuration, a valid
+supplier signature recovery, `InvoicePaid`, a real tUSD8 transfer of 1 tUSD8 to
+the supplier, and a final `InvoiceAlreadyUsed` revert on replay.
+
+This is a fork simulation. It is not a live Aevum transaction and there is no
+transaction hash.
+
+## Web and MCP checks
+
+| Command | Result |
+| --- | --- |
+| `pnpm --filter @fieldrail/web typecheck` | exit 0 |
+| `pnpm --filter @fieldrail/web build` | Next.js 16 production build, 9 routes generated |
+| `pnpm --filter @fieldrail/web test` | 9 tests passed (money parsing, policy preflight, error mapping) |
+| `pnpm --filter @fieldrail/mcp-server typecheck` | exit 0 |
+| `node scripts/mcp-smoke.mjs` | 11 tools listed; deterministic parser returned a valid draft; write tool refused without opt-in |
+
 ## Dependency provenance
 
 The remote `forge install` of OpenZeppelin v5.4.0 could not complete on this

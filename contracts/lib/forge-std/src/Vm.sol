@@ -22,4 +22,9 @@ interface Vm {
     function toString(bytes32) external pure returns (string memory);
     function startBroadcast(uint256 privateKey) external;
     function stopBroadcast() external;
+    function impersonateAccount(address) external;
+    function stopImpersonatingAccount(address) external;
+    function startImpersonate(address) external;
+    function stopImpersonate() external;
+    function deal(address, uint256) external;
 }
