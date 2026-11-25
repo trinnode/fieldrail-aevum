@@ -1,0 +1,17 @@
+{
+  "name": "fieldrail",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Purpose-bound stablecoin disbursement and agentic procurement on QDay Aevum",
+  "scripts": {
+    "check": "pnpm -r typecheck && pnpm -r lint && pnpm -r build",
+    "test": "pnpm -r test",
+    "contracts:test": "forge test --root contracts -vvv",
+    "contracts:build": "forge build --root contracts",
+    "contracts:fmt": "forge fmt --root contracts --check"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.27.0"
+}

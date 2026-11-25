@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="FIELDRAIL favicon">
+  <title>FIELDRAIL favicon</title>
+  <rect width="32" height="32" rx="7" fill="#101C2B"/>
+  <g transform="translate(1 1) scale(0.47)" stroke="#E9F1E4" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter" fill="none">
+    <path d="M8 14V50"/>
+    <path d="M8 18H32L40 32"/>
+    <path d="M8 32H40"/>
+    <path d="M8 46H32L40 32"/>
+    <path d="M48 24L56 32L48 40L40 32Z"/>
+  </g>
+  <circle cx="23.5" cy="16" r="1.8" fill="#B9D7A6"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 80" role="img" aria-label="FIELDRAIL lockup">
+  <title>FIELDRAIL lockup</title>
+  <g transform="translate(4 8) scale(0.93)" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" fill="none">
+    <path d="M8 14V50"/>
+    <path d="M8 18H32L40 32"/>
+    <path d="M8 32H40"/>
+    <path d="M8 46H32L40 32"/>
+    <path d="M48 24L56 32L48 40L40 32Z"/>
+  </g>
+  <circle cx="49" cy="41.8" r="2.4" fill="currentColor"/>
+  <text x="82" y="57"
+        fill="currentColor"
+        font-family="Instrument Sans, Arial, sans-serif"
+        font-size="42"
+        font-weight="700"
+        letter-spacing="4">FIELDRAIL</text>
+</svg>
